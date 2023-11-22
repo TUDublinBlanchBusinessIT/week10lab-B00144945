@@ -1,42 +1,34 @@
 <?php
 include("finalStepHeader.html");
+session_start();
 
-//translate the comments below into PHP code underneath each comment
+echo "First Name: " . (isset($_SESSION['passengerFN']) ? $_SESSION['passengerFN'] : "Not Provided");
+echo "<br>";
+echo "Surname: " . (isset($_SESSION['passengerSN']) ? $_SESSION['passengerSN'] : "Not Provided");
+echo "<br>";
 
-//start a session
 
-//echo the passenger's firstname from the appropriate session variable
-
-echo "<BR>";
-
-//echo the passenger's surname from the appropriate session variable
-
-echo "<BR>";
-
-// if the luggage session variable is on
-
-    //echo the amount of bags under ten kilos the passenger is bringing
+if (isset($_SESSION['luggage']) && $_SESSION['luggage'] == 1) {
+  
+    echo "Bags under 10 KG: " . (isset($_SESSION['subTenKG']) ? $_SESSION['subTenKG'] : "Not Provided");
+    echo "<br>";
     
-    echo "<BR>";
-    
-    //echo the amount of bags over ten kilos the passenger is bringing
-    
-//end if block
-
+   
+    echo "Bags between 10 and 20 KG: " . (isset($_SESSION['overTenKG']) ? $_SESSION['overTenKG'] : "Not Provided");
+    echo "<br>";
+}
 ?>
+
 </h4></div></div>
 <form method="POST" action="confirm.php">
     <div class="form-group">        
         <label class="control-label col-sm-12 text-center">Is the above information correct?</label>
         <div class="checkbox col-sm-12 text-center">
-          <label><input type="checkbox" name="confirm">Yes</input>
+          <label><input type="checkbox" name="confirm">Yes</label>
         </div>
     </div>
    
-        
-      <div class="col-sm-12 text-center">
+    <div class="col-sm-12 text-center">
         <button type="submit" class="btn btn-default">Continue</button>
-      </div>
     </div>
-    
 </form>
